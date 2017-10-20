@@ -6,7 +6,7 @@ from datetime import datetime
 import time,random,sys,json,codecs,threading,glob,re
 
 cl = LINETCR.LINE()
-cl.login(token='your authtoke here')
+cl.login(qr=True)
 cl.loginResult()
 
 ki = kk = kc = cl 
