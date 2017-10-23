@@ -49,6 +49,13 @@ helpMessage =""" Star Bot
 ¤ Gn 「group name」
 ¤ Nk 「name」
 ¤ Tag all
+¤ Mid @
+¤ Bye @
+¤ Pembuat bot
+¤ Spamcontact @
+¤ Cleanse
+¤ List group
+¤ Group bc
 
 ¤ Command kicker only ¤
 
@@ -68,6 +75,7 @@ helpMessage =""" Star Bot
 ¤ Respo︎n
 ¤ Bot cancel
 ¤ Title:
+
 """
 KAC=[cl,ki,kk,kc]
 mid = cl.getProfile().mid
@@ -1441,7 +1449,7 @@ def bot(op):
 				if msg.from_ in admin:
 							G = cl.getGroup(msg.to)
 							ginfo = cl.getGroup(msg.to)
-							G.preventJoinByTicket = False
+							G.preventJoinByTicket = True
 							cl.updateGroup(G)
 							invsend = 0
 							Ticket = cl.reissueGroupTicket(msg.to)
@@ -1461,7 +1469,7 @@ def bot(op):
             elif msg.text in ["Cv1 join"]:
 				if msg.from_ in admin:
 					X = cl.getGroup(msg.to)
-					X.preventJoinByTicket = False
+					X.preventJoinByTicket = True
 					cl.updateGroup(X)
 					invsend = 0
 					Ti = cl.reissueGroupTicket(msg.to)
@@ -1898,6 +1906,12 @@ def bot(op):
                        kk.sendText(g.mid,"KONTOL !")  
                        ki.sendText(g.mid,"KONTOL !")  
                        kc.sendText(g.mid,"KONTOL !")
+                       kk.sendText(g.mid,"KONTOL !")  
+                       ki.sendText(g.mid,"KONTOL !")  
+                       kc.sendText(g.mid,"KONTOL !")
+                       kk.sendText(g.mid,"KONTOL !")  
+                       ki.sendText(g.mid,"KONTOL !")  
+                       kc.sendText(g.mid,"KONTOL !")
                        cl.sendText(msg.to, "Done")
                        print " Spammed !"
                        
@@ -1907,7 +1921,126 @@ def bot(op):
                 cl.sendText(msg.to,"Santai dong ngentot !")
             elif msg.text in ["Ilham","Ham","ilham","ham","Star"]:
                 cl.sendText(msg.to,"Lagi coli dia bang")
-  
+                
+            elif msg.text in ["List group","Glist"]:
+                if msg.from_ in admin:
+                 gid = cl.getGroupIdsJoined()
+                 h = ""
+                 for i in gid:
+                  h += "[⭐] %s  \n" % (cl.getGroup(i).name + " | Members : " + str(len (cl.getGroup(i).members)))
+                 cl.sendText(msg.to, "☆「Group List」☆\n"+ h +"Total Group : " +str(len(gid)))
+                        
+            elif "Mid @" in msg.text:
+                _name = msg.text.replace("Mid @","")
+                _nametarget = _name.rstrip(' ')
+                gs = cl.getGroup(msg.to)
+                for g in gs.members:
+                    if _nametarget == g.displayName:
+                        cl.sendText(msg.to, g.mid)
+                    else:
+                        pass
+                    
+            elif msg.text in ["Creator","Pembuat bot"]:
+              if msg.from_ in admin:
+                msg.contentType = 13
+                msg.contentMetadata = {'mid': 'ueb75b68a3137c28a4854aea891706c97'}
+                cl.sendMessage(msg)
+                cl.sendText(msg.to,"Itu Creator Saya ")
+            
+             #-------------Fungsi Spam Start---------------------#
+            elif msg.text in ["Up","up","Up Chat","Up chat","up chat","Upchat","upchat"]:
+               if msg.from_ in admin:
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+                cl.sendText(msg.to,"KONTOL")
+                ki.sendText(msg.to,"KONTOL")
+                kk.sendText(msg.to,"KONTOL")
+        #-------------Fungsi Spam Finish---------------------#    
+            
+            elif "Group bc " in msg.text:
+                 bctxt = msg.text.replace("Group bc ", "")
+                 n = cl.getGroupIdsJoined()
+                 for manusia in n:
+                    cl.sendText(manusia, (bctxt))
+            
+            elif ("Bye " in msg.text):
+                if msg.from_ in admin:
+                  key = eval(msg.contentMetadata["MENTION"])
+                  key["MENTIONEES"][0]["M"]
+                  targets = []
+                  for x in key["MENTIONEES"]:
+                     targets.append(x["M"])
+                  for target in targets:
+                     try:
+                        cl.kickoutFromGroup(msg.to,[target])
+                     except:
+                       pass   
+            
+            elif "/InviteMeTo: " in msg.text:
+                if msg.from_ in admin:
+                    gid = msg.text.replace("/InviteMeTo: ","")
+                    if gid == "":
+                        cl.sendText(msg.to,"Invalid group id")
+                    else:
+                        try:
+                            cl.findAndAddContactsByMid(msg.from_)
+                            cl.inviteIntoGroup(gid,[msg.from_])
+                        except:
+                            cl.sendText(msg.to,"Mungkin saya tidak di dalaam grup itu")     
+                         
+            elif msg.text in ["Gr on","gr on"]:
+              if msg.from_ in admin:
+                if wait["Protectgr"] == True:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Protect Group On")
+                    else:
+                        cl.sendText(msg.to,"done")
+                else:
+                    wait["Protectgr"] = True
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Protect Group On")
+                    else:
+                        cl.sendText(msg.to,"done")             
 #------
 
 			
